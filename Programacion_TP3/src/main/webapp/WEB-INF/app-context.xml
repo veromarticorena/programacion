@@ -23,7 +23,7 @@
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost:3306/programacion_tp3?createDatabaseIfNotExist=true&amp;verifyServerCertificate=false&amp;useSSL=true&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=America/Buenos_Aires" />
-        <property name="username" value="root" />
+        <property name="username" value="seminario" />
         <property name="password" value="123456" />
     </bean>
 
@@ -54,57 +54,73 @@
         </property>
     </bean>   -->
      
-    <bean id="excursionServiceBean" class="servicio_impl.ExcursionServicioImpl">
-        <constructor-arg name="excursionDaoBean" ref="excursionDaoBean"></constructor-arg>
+    <bean id="empleadoServiceBean" class="servicio_Impl.EmpleadoServicioImpl">
+        <constructor-arg name="empleadoDaoBean" ref="empleadoDaoBean"></constructor-arg>
     </bean>
     
-    <bean id="imagenServiceBean" class="servicio_impl.ImagenServicioImpl">
-        <constructor-arg name="imagenDaoBean" ref="imagenDaoBean"></constructor-arg>
+    <bean id="legajoServiceBean" class="servicio_Impl.LegajoServicioImpl">
+        <constructor-arg name="legajoDaoBean" ref="legajoDaoBean"></constructor-arg>
     </bean>
     
-    <bean id="lugarServiceBean" class="servicio_impl.LugarServicioImpl">
-        <constructor-arg name="lugarDaoBean" ref="lugarDaoBean"></constructor-arg>
+    <bean id="licenciaServiceBean" class="servicio_Impl.LicenciaServicioImpl">
+        <constructor-arg name="licenciaDaoBean" ref="licenciaDaoBean"></constructor-arg>
     </bean>
     
-    <bean id="reservaServiceBean" class="servicio_impl.ReservaServicioImpl">
-        <constructor-arg name="reservaDaoBean" ref="reservaDaoBean"></constructor-arg>
+    <bean id="requerimientoServiceBean" class="servicio_Impl.RequerimientoServicioImpl">
+        <constructor-arg name="requerimientoDaoBean" ref="requerimientoDaoBean"></constructor-arg>
     </bean>
     
-    <bean id="rolServiceBean" class="servicio_impl.RolServicioImpl">
+    <bean id="rolServiceBean" class="servicio_Impl.RolServicioImpl">
         <constructor-arg name="rolDaoBean" ref="rolDaoBean"></constructor-arg>
     </bean>
     
-    <bean id="usuarioServiceBean" class="servicio_impl.UsuarioServicioImpl">
-        <constructor-arg name="usuarioDaoBean" ref="usuarioDaoBean"></constructor-arg>
+    <bean id="sectorServiceBean" class="servicio_Impl.SectorServicioImpl">
+        <constructor-arg name="sectorDaoBean" ref="sectorDaoBean"></constructor-arg>
+    </bean>
+    
+    <bean id="tareaServiceBean" class="servicio_Impl.TareaServicioImpl">
+        <constructor-arg name="tareaDaoBean" ref="tareaDaoBean"></constructor-arg>
+    </bean>
+    
+    <bean id="tipoLicenciaServiceBean" class="servicio_Impl.TipoLicenciaServicioImpl">
+        <constructor-arg name="tipoLicenciaDaoBean" ref="tipoLicenciaDaoBean"></constructor-arg>
+    </bean>
+    
+
+    
+    <bean id="empleadoDaoBean" class="dao_Impl.EmpleadoDaoImpl" scope = "singleton">
+        <constructor-arg name="sessionFactory" ref="sessionFactory"></constructor-arg>
+    </bean>
+    
+    <bean id="legajoDaoBean" class="dao_Impl.LegajoDaoImpl" scope = "singleton">
+        <constructor-arg name="sessionFactory" ref="sessionFactory"></constructor-arg>
+    </bean>
+    
+    <bean id="licenciaDaoBean" class="dao_Impl.LicenciaDaoImpl" scope = "singleton">
+        <constructor-arg name="sessionFactory" ref="sessionFactory"></constructor-arg>
+    </bean>
+    
+    <bean id="requerimientoDaoBean" class="dao_Impl.RequerimientoDaoImpl" scope = "singleton">
+        <constructor-arg name="sessionFactory" ref="sessionFactory"></constructor-arg>
+    </bean>
+    
+    <bean id="rolDaoBean" class="dao_Impl.RolDaoImpl" scope = "singleton">
+      <constructor-arg name="sessionFactory" ref="sessionFactory"></constructor-arg>
+    </bean>
+    
+    <bean id="sectorDaoBean" class="dao_Impl.SectorDaoImpl" scope = "singleton">
+        <constructor-arg name="sessionFactory" ref="sessionFactory"></constructor-arg>
+    </bean>
+    
+    <bean id="tareaDaoBean" class="dao_Impl.TareaDaoImpl" scope = "singleton">
+        <constructor-arg name="sessionFactory" ref="sessionFactory"></constructor-arg>
+    </bean>
+    
+    <bean id="tipoLicenciaDaoBean" class="dao_Impl.TipoLicenciaDaoImpl" scope = "singleton">
+       <constructor-arg name="sessionFactory" ref="sessionFactory"></constructor-arg>
     </bean>
 
-    <bean id="excursionDaoBean" class="dao_impl.ExcursionDaoImpl" scope="singleton">
-        <constructor-arg name="sessionFactory" ref="sessionFactory"></constructor-arg>
-    </bean>
     
-    <bean id="imagenDaoBean" class="dao_impl.ImagenDaoImpl" scope="singleton">
-        <constructor-arg name="sessionFactory" ref="sessionFactory"></constructor-arg>
-    </bean>
-    
-    <bean id="lugarDaoBean" class="dao_impl.LugarDaoImpl" scope="singleton">
-        <constructor-arg name="sessionFactory" ref="sessionFactory"></constructor-arg>
-    </bean>
-    
-    <bean id="reservaDaoBean" class="dao_impl.ReservaDaoImpl" scope="singleton">
-        <constructor-arg name="sessionFactory" ref="sessionFactory"></constructor-arg>
-    </bean>
-
-    <bean id="rolDaoBean" class="dao_impl.RolDaoImpl" scope="singleton">
-        <constructor-arg name="sessionFactory" ref="sessionFactory"></constructor-arg>
-    </bean>
-    
-    <bean id="usuarioDaoBean" class="dao_impl.UsuarioDaoImpl" scope="singleton">
-        <constructor-arg name="sessionFactory" ref="sessionFactory"></constructor-arg>
-    </bean>
-
-    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
 
     <bean id="persistenceExceptionTranslationPostProcessor" class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 
@@ -112,11 +128,10 @@
     <context:annotation-config />
 
     <mvc:annotation-driven />
-    <mvc:resources mapping="/color/**" location="/color/" />
+    
     <mvc:resources mapping="/css/**" location="/css/" />
     <mvc:resources mapping="/font-awesome/**" location="/font-awesome/" />
     <mvc:resources mapping="/fonts/**" location="/fonts/" />
-    <mvc:resources mapping="/img/**" location="/img/" />
     <mvc:resources mapping="/js/**" location="/js/" />
 
     <tx:annotation-driven transaction-manager="transactionManager" />

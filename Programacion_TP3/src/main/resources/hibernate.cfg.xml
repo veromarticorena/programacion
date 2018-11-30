@@ -19,11 +19,13 @@
         <property name="hibernate.c3p0.max_statements">50</property>
         <property name="hibernate.c3p0.timeout">1800</property>
         
-        <mapping class="entidad.Excursion" />
-        <mapping class="entidad.Imagen" />
-        <mapping class="entidad.Lugar" />
-        <mapping class="entidad.Reserva" />
+        <mapping class="entidad.Empleado" />
+        <mapping class="entidad.Legajo" />
+        <mapping class="entidad.Licencia" />
+        <mapping class="entidad.Requerimiento" />
         <mapping class="entidad.Rol" />
-        <mapping class="entidad.Usuario" />
+        <mapping class="entidad.Sector" />
+        <mapping class="entidad.Tarea" />
+        <mapping class="entidad.TipoLicencia" />
     </session-factory>
 </hibernate-configuration>
