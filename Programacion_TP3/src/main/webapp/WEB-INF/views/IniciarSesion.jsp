@@ -57,7 +57,7 @@
                 <div class="row">
                     <div class="col-lg-6">
 
-						<form action = "<%=request.getContextPath() %>/IniciarSesion" method ="post">
+						<form action = "login" method ="post">
                         
                             <br></br>
                             
@@ -75,7 +75,7 @@
                             
                             <br></br>
                             
-                            <label class="error">${lblvalidacion}</label>
+                            <label class="error">${Message}</label>
                             
                             <br></br>
 

@@ -39,7 +39,30 @@ private RequerimientoDao requerimientoDao;
 
 	public Requerimiento traer(long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return requerimientoDao.traer(id);
 	}
+	
+	public List<Requerimiento> habilitados() {
+		return requerimientoDao.habilitados();		
+	}
+	
+	public List<Requerimiento> habilitadosPorEmpleado(String dni) {
+		return requerimientoDao.habilitadosPorEmpleado(dni);		
+	}
+
+
+	@Override
+	public List<Requerimiento> traerPorNumero(long numero) {		
+		
+		return requerimientoDao.traerPorNumero(numero);
+	}
+
+	@Override
+	public List<Requerimiento> traerPorNumeroYEmpleado(String dni, long numero) {		
+		
+		return requerimientoDao.traerPorNumeroYEmpleado(dni, numero);
+	}
+
+	
 
 }

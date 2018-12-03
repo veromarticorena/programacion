@@ -1,6 +1,7 @@
 package entidad;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import javax.persistence.*;
 
@@ -16,10 +17,10 @@ public class Licencia implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	@Id
-	protected String fechaInicio;
+	protected Date fechaInicio;
 	
 	@Id
-	protected String fechaFin;
+	protected Date fechaFin;
 	
 	@Id
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -45,7 +46,7 @@ public class Licencia implements Serializable{
 
 
 
-	public String getFechaInicio() {
+	public Date getFechaInicio() {
 		return fechaInicio;
 	}
 
@@ -55,7 +56,7 @@ public class Licencia implements Serializable{
 
 
 
-	public void setFechaInicio(String fechaInicio) {
+	public void setFechaInicio(Date fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
 
@@ -65,7 +66,7 @@ public class Licencia implements Serializable{
 
 
 
-	public String getFechaFin() {
+	public Date getFechaFin() {
 		return fechaFin;
 	}
 
@@ -75,7 +76,7 @@ public class Licencia implements Serializable{
 
 
 
-	public void setFechaFin(String fechaFin) {
+	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 
@@ -125,7 +126,7 @@ public class Licencia implements Serializable{
 
 
 
-	public Licencia(String fechaInicio, String fechaFin, Empleado empleado, TipoLicencia tipoLicencia,
+	public Licencia(Date fechaInicio, Date fechaFin, Empleado empleado, TipoLicencia tipoLicencia,
 			Integer cantidadDias) {
 		super();
 		this.fechaInicio = fechaInicio;

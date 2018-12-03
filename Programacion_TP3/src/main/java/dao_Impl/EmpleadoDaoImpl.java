@@ -39,11 +39,6 @@ public class EmpleadoDaoImpl implements EmpleadoDao {
 		hibernateTemplate.delete(t);		
 	}
 
-	@Transactional(propagation = Propagation.REQUIRED)
-	public Empleado traer(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	@Transactional(propagation = Propagation.REQUIRED)
 	public List<Empleado> listar() {
@@ -53,15 +48,15 @@ public class EmpleadoDaoImpl implements EmpleadoDao {
 	
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public Empleado empleadoAutenticado(String contrasenia, Integer legajo) {
+	public Empleado empleadoAutenticado(String contrasenia, Long legajo) {
 		Empleado usuario = hibernateTemplate.execute(new HibernateCallback<Empleado>() {
 
 			@Override
 			public Empleado doInHibernate(Session session) {
 				try {
 					@SuppressWarnings({ "unchecked" })
-					Query<Empleado> query = session.createQuery("from Empleado as e left join fetch e.legajo as l where l.idLegajo " + legajo + " and e.contrasenia  = '"
-							+ contrasenia + "' and habilitado is true");
+					Query<Empleado> query = session.createQuery("from Empleado as e left join fetch e.legajo as l where l.idLegajo = " + legajo + " and l.contrasenia  = '"
+							+ contrasenia + "' and e.habilitado is true");
 					Empleado usuario = query.getSingleResult();
 
 					return usuario;
@@ -69,11 +64,13 @@ public class EmpleadoDaoImpl implements EmpleadoDao {
 					return null;
 				}
 			}
+			
 
 		});
 
 		return usuario;
 	}
-	
+
+
 
 }

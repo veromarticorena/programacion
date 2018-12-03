@@ -1,6 +1,7 @@
 package entidad;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import javax.persistence.*;
 
@@ -26,10 +27,10 @@ public class Empleado  implements Serializable{
 	protected String apellido;
 	
 	@Column(name="FECHA_NAC",nullable = false)
-	protected String fechaNac;
+	protected Date fechaNac;
 	
 	@Column(name="FECHA_ING",nullable = false)
-	protected String fechaIngreso;
+	protected Date fechaIngreso;
 	
 	@Column(name="SALDO_VAC",nullable = false)
 	protected Integer saldoVacaciones;
@@ -107,22 +108,22 @@ public class Empleado  implements Serializable{
 	}
 
 
-	public String getFechaNac() {
+	public Date getFechaNac() {
 		return fechaNac;
 	}
 
 
-	public void setFechaNac(String fechaNac) {
+	public void setFechaNac(Date fechaNac) {
 		this.fechaNac = fechaNac;
 	}
 
 
-	public String getFechaIngreso() {
+	public Date getFechaIngreso() {
 		return fechaIngreso;
 	}
 
 
-	public void setFechaIngreso(String fechaIngreso) {
+	public void setFechaIngreso(Date fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
 
@@ -202,7 +203,7 @@ public class Empleado  implements Serializable{
 	}
 
 
-	public Empleado(String dni, String nombre, String apellido, String fechaNac, String fechaIngreso,
+	public Empleado(String dni, String nombre, String apellido, Date fechaNac, Date fechaIngreso,
 			Integer saldoVacaciones, Integer saldoExamen, String email, String telefono, Legajo legajo,
 			Empleado empleado, Sector sector, Boolean habilitado) {
 		super();

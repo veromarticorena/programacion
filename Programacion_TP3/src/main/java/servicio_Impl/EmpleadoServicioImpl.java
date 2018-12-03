@@ -41,6 +41,13 @@ public class EmpleadoServicioImpl implements  EmpleadoServicio{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	@Override
+	public Empleado empleadoAutenticado(String contrasenia, long legajo) {
+		// TODO Auto-generated method stub
+		return empleadoDao.empleadoAutenticado(contrasenia, legajo);
+	}
 	
 	
 	

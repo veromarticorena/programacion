@@ -36,7 +36,7 @@ public class LegajoDaoImpl implements LegajoDao{
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public Legajo traer(Long id) {
+	public Legajo traer(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

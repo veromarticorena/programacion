@@ -17,14 +17,14 @@ public class TipoLicencia implements Serializable {
 	
 	@Id
 	@Column(name="ID_TIPO",nullable = false)
-	@GeneratedValue(strategy = GenerationType.AUTO)	
-	protected Integer idTipoLicencia;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	protected Long idTipoLicencia;
 	
 	@Column(name="DESCRIPCION",nullable = false)
 	protected String descripcion;
 
 
-	public TipoLicencia(Integer idTipoLicencia, String descripcion) {
+	public TipoLicencia(Long idTipoLicencia, String descripcion) {
 		super();
 		this.idTipoLicencia = idTipoLicencia;
 		this.descripcion = descripcion;
@@ -36,12 +36,12 @@ public class TipoLicencia implements Serializable {
 	}
 
 
-	public Integer getIdTipoLicencia() {
+	public Long getIdTipoLicencia() {
 		return idTipoLicencia;
 	}
 
 
-	public void setIdTipoLicencia(Integer idTipoLicencia) {
+	public void setIdTipoLicencia(Long idTipoLicencia) {
 		this.idTipoLicencia = idTipoLicencia;
 	}
 

@@ -29,12 +29,15 @@
 	
 	 <!-- Tabla -->
 	<link rel="stylesheet" href="css/EstiloTabla.css">
+	
+	<!--  calendario -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">   
 
 
 </head>
 
 <body>
-<jsp:useBean id="beanUsuario" class="Clases.Usuario" scope="session"></jsp:useBean>
+
 
     <div id="wrapper">
 
@@ -54,10 +57,10 @@
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">            
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <jsp:getProperty property="nombre" name="beanUsuario"/> <jsp:getProperty property="apellido" name="beanUsuario"/> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"> ${loggedIn.nombre} ${loggedIn.apellido}</i> <b class="caret"></b></a>
                     <ul class="dropdown-menu">                  
                         <li>
-                            <a href="CerrarSesion"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a>
+                            <a href="cerrar-sesion"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a>
                         </li>
                     </ul>
                 </li>

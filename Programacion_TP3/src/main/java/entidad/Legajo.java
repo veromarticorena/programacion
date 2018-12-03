@@ -3,6 +3,8 @@ package entidad;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.hibernate.annotations.Type;
+
 @Entity
 @Table (name = "LEGAJOS")
 
@@ -13,8 +15,8 @@ public class Legajo implements Serializable {
 	
 	@Id
 	@Column(name="ID_LEGAJO",nullable = false)
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	protected Integer idLegajo;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	protected Long idLegajo;
 	
 	@Column(name="CONTRASENIA",nullable = false)
 	protected String contrasenia;
@@ -23,9 +25,24 @@ public class Legajo implements Serializable {
 	@JoinColumn(name = "ID_ROL")	
 	protected Rol rol;
 	
+	@Column(name="HABILITADO",nullable = false)
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	protected boolean habilitado;
+	
+	
 
 	
-	public Legajo(Integer idLegajo, Rol rol, String contrasenia) {
+	public boolean isHabilitado() {
+		return habilitado;
+	}
+
+
+	public void setHabilitado(boolean habilitado) {
+		this.habilitado = habilitado;
+	}
+
+
+	public Legajo(Long idLegajo, Rol rol, String contrasenia) {
 		super();
 		this.idLegajo = idLegajo;
 		this.rol = rol;
@@ -33,12 +50,12 @@ public class Legajo implements Serializable {
 	}
 
 
-	public Integer getIdLegajo() {
+	public Long getIdLegajo() {
 		return idLegajo;
 	}
 
 
-	public void setIdLegajo(Integer idLegajo) {
+	public void setIdLegajo(Long idLegajo) {
 		this.idLegajo = idLegajo;
 	}
 

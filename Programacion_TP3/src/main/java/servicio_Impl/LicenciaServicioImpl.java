@@ -40,6 +40,11 @@ public class LicenciaServicioImpl implements LicenciaServicio {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	@Override
+	public List<Licencia> licenciaPorEmpleado(String dni) {
+		
+		return licenciaDao.licenciaPorEmpleado(dni);
+	}
 
 }

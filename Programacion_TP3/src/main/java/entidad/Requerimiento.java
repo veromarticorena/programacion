@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.Type;
+
 @Entity
 @Table (name = "REQUERIMIENTOS")
 
@@ -14,25 +16,62 @@ public class Requerimiento implements Serializable{
 	
 	@Id
 	@Column(name="ID_RQ",nullable = false)
-	protected Integer idRequerimiento;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	protected Long idRequerimiento;
 	
+
+	@Column(name="NUMERO",nullable = false)
+	protected Long numero;
+	
+
 	@Column(name="DESCRIPCION",nullable = false)
 	protected String descripcion;
 	
 	@ManyToOne(cascade={CascadeType.ALL})
 	@JoinColumn(name = "DNI_EMPLEADO")	
 	protected Empleado empleado;
+	
+	@Column(name="HABILITADO",nullable = false)
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	protected boolean habilitado;
+	
+
+	
+	public Long getNumero() {
+		return numero;
+	}
+
+
+
+
+	public void setNumero(Long numero) {
+		this.numero = numero;
+	}
 
 	
 
-	public Integer getIdRequerimiento() {
+	public boolean isHabilitado() {
+		return habilitado;
+	}
+
+
+
+
+	public void setHabilitado(boolean habilitado) {
+		this.habilitado = habilitado;
+	}
+
+
+
+
+	public Long getIdRequerimiento() {
 		return idRequerimiento;
 	}
 
 
 
 
-	public void setIdRequerimiento(Integer idRequerimiento) {
+	public void setIdRequerimiento(Long idRequerimiento) {
 		this.idRequerimiento = idRequerimiento;
 	}
 
@@ -67,7 +106,7 @@ public class Requerimiento implements Serializable{
 
 
 
-	public Requerimiento(Integer idRequerimiento, String descripcion, Empleado empleado) {
+	public Requerimiento(Long idRequerimiento, String descripcion, Empleado empleado) {
 		super();
 		this.idRequerimiento = idRequerimiento;
 		this.descripcion = descripcion;

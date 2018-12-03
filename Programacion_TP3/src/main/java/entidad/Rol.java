@@ -13,14 +13,14 @@ public class Rol implements Serializable{
 	
 	@Id
 	@Column(name="ID_ROL",nullable = false)
-	@GeneratedValue(strategy = GenerationType.AUTO)	
-	protected Integer idRol;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	protected Long idRol;
 	
 	@Column(name="DESCRIPCION",nullable = false)
 	protected String descripcion;
 	
 	
-	public Rol(Integer idRol, String descripcion) {
+	public Rol(Long idRol, String descripcion) {
 		super();
 		this.idRol = idRol;
 		this.descripcion = descripcion;
@@ -28,12 +28,12 @@ public class Rol implements Serializable{
 
 	
 
-	public Integer getIdRol() {
+	public Long getIdRol() {
 		return idRol;
 	}
 
 
-	public void setIdRol(Integer idRol) {
+	public void setIdRol(Long idRol) {
 		this.idRol = idRol;
 	}
 

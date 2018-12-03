@@ -13,8 +13,8 @@ public class Sector implements Serializable{
 	
 	@Id
 	@Column(name="ID_SECTOR",nullable = false)
-	@GeneratedValue(strategy = GenerationType.AUTO)	
-	protected Integer idSector;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	protected Long idSector;
 	
 	@Column(name="DESCRIPCION",nullable = false)
 	protected String descripcion;
@@ -25,12 +25,12 @@ public class Sector implements Serializable{
 	}
 
 
-	public Integer getIdSector() {
+	public Long getIdSector() {
 		return idSector;
 	}
 
 
-	public void setIdSector(Integer idSector) {
+	public void setIdSector(Long idSector) {
 		this.idSector = idSector;
 	}
 
@@ -50,7 +50,7 @@ public class Sector implements Serializable{
 	}
 
 
-	public Sector(Integer idSector, String descripcion) {
+	public Sector(Long idSector, String descripcion) {
 		super();
 		this.idSector = idSector;
 		this.descripcion = descripcion;
