@@ -11,6 +11,7 @@
     <script src="js/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 	<script src="js/table.js"></script>
+	<script src="js/table2.js"></script>
 
 </body>
 

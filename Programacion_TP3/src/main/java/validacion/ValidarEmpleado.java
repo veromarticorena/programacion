@@ -7,7 +7,7 @@ public class ValidarEmpleado {
 	private static ErrorEmpleado error;
 
 	public static ErrorEmpleado datos(String dni, String nombre, String apellido, String telefono,
-			String email, String legajo) {
+			String email) {
 
 		error = new ErrorEmpleado();
 
@@ -43,12 +43,7 @@ public class ValidarEmpleado {
 			error.setOk(false);
 		}
 		
-		if (!Validacion.soloNumero(legajo)) {
-
-			error.setLegajoError("*El legajo debe contener solo números.");
-			error.setOk(false);
-		}
-
+		
 		return error;
 	}
 

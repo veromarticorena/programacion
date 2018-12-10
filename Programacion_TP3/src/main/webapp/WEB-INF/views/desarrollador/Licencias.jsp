@@ -8,10 +8,10 @@
                         <a href="requerimientos-desarrollador"><i class="fa fa-fw fa-book"></i> Requerimientos </a>
                     </li>
                     <li class = "active">
-                        <a href="licencias"><i class="fa fa-fw fa-pencil-square-o"></i> Licencias </a>
+                        <a href="licencias-desarrollador"><i class="fa fa-fw fa-pencil-square-o"></i> Licencias </a>
                     </li>
                     <li>
-                        <a href="tareas"><i class="fa fa-fw fa-tasks"></i> Tareas</a>
+                        <a href="tareas-desarrollador"><i class="fa fa-fw fa-tasks"></i> Tareas</a>
                     </li>                  
 
                 </ul>

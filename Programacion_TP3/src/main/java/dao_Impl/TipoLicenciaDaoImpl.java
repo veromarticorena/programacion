@@ -35,16 +35,20 @@ public class TipoLicenciaDaoImpl implements TipoLicenciaDao{
 		hibernateTemplate.delete(t);		
 	}
 
-	@Transactional(propagation = Propagation.REQUIRED)
-	public TipoLicencia traer(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	
 	@Transactional(propagation = Propagation.REQUIRED)
 	public List<TipoLicencia> listar() {
 		List<TipoLicencia> list = hibernateTemplate.loadAll(TipoLicencia.class);		
 		return list;
+	}
+
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public TipoLicencia traer(long id) {
+		
+		return hibernateTemplate.get(TipoLicencia.class, id);
 	}
 	
 

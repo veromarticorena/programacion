@@ -27,7 +27,7 @@ public class Licencia implements Serializable{
 	@JoinColumn(name = "DNI_EMPLEADO")
 	protected Empleado empleado;
 	
-	@ManyToOne(cascade={CascadeType.ALL})
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ID_TIPO")	
 	protected TipoLicencia tipoLicencia;
 	

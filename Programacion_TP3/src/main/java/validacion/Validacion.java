@@ -48,5 +48,17 @@ public class Validacion {
 
 		return true;
 	}
+	
+	public static boolean valor(String valor) {
+		Pattern expresion = Pattern.compile("^[0-9]+([.][0-9]+)?$");
+		Matcher validar = expresion.matcher(valor);
+
+		if (!validar.matches()) {
+			return false;
+		}
+
+		return true;
+	}
+	
 
 }

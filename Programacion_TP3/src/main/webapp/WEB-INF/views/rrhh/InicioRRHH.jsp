@@ -8,16 +8,16 @@
                         <a href="inicio-rrhh"><i class="fa fa-fw fa-home"></i> Inicio</a>
                     </li>
 					<li>
-                        <a href="menu-empleados-rrhh"><i class="fa fa-fw fa-book"></i> Empleados </a>
+                        <a href="menu-ABM"><i class="fa fa-fw fa-book"></i> Empleados </a>
                     </li>
                     <li>
-                        <a href="menu-licencias-rrhh"><i class="fa fa-fw fa-pencil-square-o"></i> Licencias </a>
+                        <a href="licencias-rrhh"><i class="fa fa-fw fa-pencil-square-o"></i> Licencias </a>
                     </li>
                     <li>
-                        <a href="menu-tareas-rrhh"><i class="fa fa-fw fa-tasks"></i> Tareas</a>
+                        <a href="tareas-rrhh"><i class="fa fa-fw fa-tasks"></i> Tareas</a>
                     </li>
                     <li>
-                        <a href="menu-cierre-rrhh"><i class="fa fa-fw fa-tasks"></i> Cierre mensual</a>
+                        <a href="cierre-rrhh"><i class="fa fa-fw fa-tasks"></i> Cierre mensual</a>
                     </li>
 
                 </ul>
@@ -50,7 +50,7 @@
 				<!-- INICIO - CUADROS DEL CENTRO -->
 				<!--  -->
                 <div class="row">
-                    <div class="col-lg-6 col-md-6">
+                    <div class="col-lg-8 col-md-6">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="row">
@@ -58,23 +58,17 @@
                                         <i class="fa fa-book fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">${cantidadAlumnos}</div>
-                                        <div>Alumnos</div>
+                                        <div class="huge">${loggedIn.saldoExamen}</div>
+                                        <div>Días de estudio</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="ListaAlumnos">
-                                <div class="panel-footer">
-                                    <span class="pull-left">Ver lista</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
+                            
                         </div>
                     </div>
 					
 					
-                    <div class="col-lg-6 col-md-6">
+                    <div class="col-lg-8 col-md-6">
                         <div class="panel panel-green">
                             <div class="panel-heading">
                                 <div class="row">
@@ -82,23 +76,20 @@
                                         <i class="fa fa-plane fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">${cantidadDocentes}</div>
-                                        <div>Profesores</div>
+                                        <div class="huge">${loggedIn.saldoVacaciones}</div>
+                                        <div>Días de vacaciones</div>
                                     </div>
                                 </div>
-                            </div>
-                            <a href="ListaDocentes">
-                                <div class="panel-footer">
-                                    <span class="pull-left">Ver lista</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
+                            </div>                            
                         </div>
                     </div> 
                 </div>
                 <!-- /.row -->
 				
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
 				<br></br>
 
 				

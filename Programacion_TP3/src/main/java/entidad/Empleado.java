@@ -49,15 +49,6 @@ public class Empleado  implements Serializable{
 	@JoinColumn(name = "ID_LEGAJO")
 	protected Legajo legajo;
 	
-	//
-	@ManyToOne(cascade={CascadeType.ALL})	
-	@JoinColumn(name = "DNI_SUPERVISOR")
-	protected Empleado empleado;	
-	
-	//
-	@ManyToOne(cascade={CascadeType.ALL})
-	@JoinColumn(name = "ID_SECTOR")
-	protected Sector sector;
 	
 	
 	@Column(name="HABILITADO",nullable = false)
@@ -178,26 +169,6 @@ public class Empleado  implements Serializable{
 	}
 
 
-	public Empleado getEmpleado() {
-		return empleado;
-	}
-
-
-	public void setEmpleado(Empleado empleado) {
-		this.empleado = empleado;
-	}
-
-
-	public Sector getSector() {
-		return sector;
-	}
-
-
-	public void setSector(Sector sector) {
-		this.sector = sector;
-	}
-
-
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
@@ -205,7 +176,7 @@ public class Empleado  implements Serializable{
 
 	public Empleado(String dni, String nombre, String apellido, Date fechaNac, Date fechaIngreso,
 			Integer saldoVacaciones, Integer saldoExamen, String email, String telefono, Legajo legajo,
-			Empleado empleado, Sector sector, Boolean habilitado) {
+			Empleado empleado, Boolean habilitado) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
@@ -217,8 +188,6 @@ public class Empleado  implements Serializable{
 		this.email = email;
 		this.telefono = telefono;
 		this.legajo = legajo;
-		this.empleado = empleado;
-		this.sector = sector;
 		this.habilitado = habilitado;
 	}
 

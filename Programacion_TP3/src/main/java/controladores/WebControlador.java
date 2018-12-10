@@ -1,6 +1,7 @@
 package controladores;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,11 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import Clases.CierreMensual;
 import entidad.Empleado;
 import entidad.Licencia;
 import entidad.Requerimiento;
+import entidad.Tarea;
 import servicio.LicenciaServicio;
 import servicio.RequerimientoServicio;
+import servicio.TareaServicio;
 
 @Controller
 public class WebControlador {
@@ -26,6 +30,12 @@ public class WebControlador {
 	
 	@Autowired
 	LicenciaServicio licenciaServicio;
+	
+	@Autowired
+	TareaServicio tareaServicio;
+	
+	String MESES[] = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+
 	
 	 @RequestMapping(path = "/")
 	    public ModelAndView iniciar() {  
@@ -55,6 +65,8 @@ public class WebControlador {
 	    
 	    @RequestMapping(value = "/requerimientos-desarrollador", method = { RequestMethod.GET })
 		public ModelAndView requerimientosDesarrollador(HttpServletRequest request) {
+	    	
+	    	//Inicio la pagina mostrando todos los requerimientos cargados por el empleado logueado
 			
 	    	 HttpSession session = request.getSession();
 	    	 Empleado empleado = new Empleado();		 
@@ -74,6 +86,8 @@ public class WebControlador {
 		@RequestMapping(value = "/licencias-desarrollador", method = { RequestMethod.GET })
 		public ModelAndView licenciasDesarrollador(HttpServletRequest request) {
 			
+			//muestro todas las licencias del empleado logueado
+			
 			 ModelAndView mv = new ModelAndView("desarrollador/Licencias");
 			 
 			 HttpSession session = request.getSession();
@@ -91,35 +105,145 @@ public class WebControlador {
 		}
 		
 		@RequestMapping(value = "/tareas-desarrollador", method = { RequestMethod.GET })
-		public ModelAndView menuTareas() {
+		public ModelAndView tareasDesarrollador(HttpServletRequest request) {
+			
+			//muestro las tareas y las licencias del empleado del mes actual
 			
 			 ModelAndView mv = new ModelAndView("desarrollador/Tareas");
+			 String form2 = "none";
+			 mv.addObject("form2", form2);
+			 
+			 Calendar fecha = Calendar.getInstance();
+		     Integer anioencurso = fecha.get(Calendar.YEAR);
+		     Integer mes = fecha.get(Calendar.MONTH) + 1;   
+		     
+		     String nombreMes = MESES[mes-1];
+		     
+			 
+			 HttpSession misession = request.getSession(true);
+	    	 Empleado empleado = new Empleado();		 
+			 empleado = (Empleado) misession.getAttribute("loggedIn");
+			 
+			 List<Licencia> licencias = new ArrayList<Licencia>();
+			 List<Tarea> tareas = new ArrayList<Tarea>();
+			 
+			 tareas = tareaServicio.tareasPorEmpleadoYMes(empleado.getDni(), mes, anioencurso);
+			 licencias = licenciaServicio.licenciaPorEmpleadoYMes(empleado.getDni(),mes,anioencurso);
+			 
+			 misession.setAttribute("SessionLicencias", licencias);			
+			 misession.setAttribute("SessionTareas", tareas);			 
+			 mv.addObject("anioencurso", anioencurso);
+			 mv.addObject("nombreMes", nombreMes);
+			 
 		     return mv;
 		
 		}
 		
 		  // *********************** RRHH ********************************* //
 		
-		 @RequestMapping(value = "/menu-empleados-rrhh", method = { RequestMethod.GET })
-			public ModelAndView menuEmpleadosRRHH() {
+		 @RequestMapping(value = "/inicio-rrhh", method = { RequestMethod.GET })
+			public ModelAndView inicioRRHH() {
 				
-				 ModelAndView mv = new ModelAndView("rrhh/MenuEmpleados");
+				 ModelAndView mv = new ModelAndView("rrhh/InicioRRHH");
+			     return mv;
+			
+			}		 
+		 
+		
+		 @RequestMapping(value = "/menu-ABM", method = { RequestMethod.GET })
+			public ModelAndView menuABM() {
+				
+				 ModelAndView mv = new ModelAndView("rrhh/MenuABM");
+			     return mv;
+			
+			}
+		 
+		 @RequestMapping(value = "/alta-desarrollador", method = { RequestMethod.GET })
+			public ModelAndView altaDesarrollador() {
+				
+				 ModelAndView mv = new ModelAndView("rrhh/AltaDesarrollador");
+			     return mv;
+			
+			}
+		 
+		 @RequestMapping(value = "/baja-desarrollador", method = { RequestMethod.GET })
+			public ModelAndView bajaDesarrollador() {
+				
+				 ModelAndView mv = new ModelAndView("rrhh/BajaDesarrollador");
+			     return mv;
+			
+			}
+		 
+		 @RequestMapping(value = "/modificar-desarrollador", method = { RequestMethod.GET })
+			public ModelAndView modificarDesarrollador() {
+				
+				 ModelAndView mv = new ModelAndView("rrhh/ModificarDesarrollador");
 			     return mv;
 			
 			}
 			
-			@RequestMapping(value = "/menu-licencias-rrhh", method = { RequestMethod.GET })
-			public ModelAndView menuLicenciasRRHH() {
+			@RequestMapping(value = "/licencias-rrhh", method = { RequestMethod.GET })
+			public ModelAndView licenciasRRHH() {
 				
-				 ModelAndView mv = new ModelAndView("rrhh/MenuLicencias");
+				 ModelAndView mv = new ModelAndView("rrhh/Licencias");
+				 String form2 = "none";
+				 mv.addObject("form2", form2);
 			     return mv;
 			
 			}
 			
-			@RequestMapping(value = "/menu-tareas-rrrhh", method = { RequestMethod.GET })
-			public ModelAndView menuTareasRRHH() {
+			@RequestMapping(value = "/listado-rrhh", method = { RequestMethod.GET })
+			public ModelAndView listadoRRHH() {
 				
-				 ModelAndView mv = new ModelAndView("rrhh/MenuTareas");
+				 ModelAndView mv = new ModelAndView("rrhh/Listado");
+			     return mv;
+			
+			}
+			
+			@RequestMapping(value = "/tareas-rrhh", method = { RequestMethod.GET })
+			public ModelAndView tareasRRHH(HttpServletRequest request) {
+				
+				 ModelAndView mv = new ModelAndView("rrhh/Tareas");	
+				 
+				 HttpSession misession = request.getSession(true);
+				 
+				 String form2 = "none";
+				 mv.addObject("form2", form2);		
+				 
+				 misession.removeAttribute("sTareas");
+							     
+			     return mv;
+			
+			}
+			
+			@RequestMapping(value = "/cierre-rrhh", method = { RequestMethod.GET })
+			public ModelAndView cierreMensual(HttpServletRequest request) {
+				
+				 ModelAndView mv = new ModelAndView("rrhh/CierreMensual");
+				 
+				 String form2 = "none";
+				 mv.addObject("form2", form2);	
+				 
+				 HttpSession misession = request.getSession(true);
+				 
+				 List<CierreMensual> lista = new ArrayList<CierreMensual>();
+				 
+				 Calendar fecha = Calendar.getInstance();
+			     Integer anioencurso = fecha.get(Calendar.YEAR);
+				 
+				 misession.setAttribute("cierre", lista);
+				 mv.addObject("anioencurso", anioencurso);
+				 
+				 
+			     return mv;
+			
+			}
+			
+			@RequestMapping(value = "/menu-rq-rrhh", method = { RequestMethod.GET })
+			public ModelAndView requerimientosRRHH() {
+				
+				 ModelAndView mv = new ModelAndView("rrhh/MenuRq");			 
+				 
 			     return mv;
 			
 			}

@@ -40,11 +40,11 @@
         </property>
     </bean> 
     
-     <!--  <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+      <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="host" value="smtp.gmail.com" />
         <property name="port" value="587" />
-        <property name="username" value="nieve.tours@gmail.com" />
-        <property name="password" value="seminario123" />
+        <property name="username" value="softwarecompany2000@gmail.com" />
+        <property name="password" value="programacion123" />
         <property name="javaMailProperties">
             <props>
                 <prop key="mail.transport.protocol">smtp</prop>
@@ -52,7 +52,7 @@
                 <prop key="mail.smtp.starttls.enable">true</prop>
             </props>
         </property>
-    </bean>   -->
+    </bean>  
      
     <bean id="empleadoServiceBean" class="servicio_Impl.EmpleadoServicioImpl">
         <constructor-arg name="empleadoDaoBean" ref="empleadoDaoBean"></constructor-arg>
@@ -74,10 +74,7 @@
         <constructor-arg name="rolDaoBean" ref="rolDaoBean"></constructor-arg>
     </bean>
     
-    <bean id="sectorServiceBean" class="servicio_Impl.SectorServicioImpl">
-        <constructor-arg name="sectorDaoBean" ref="sectorDaoBean"></constructor-arg>
-    </bean>
-    
+       
     <bean id="tareaServiceBean" class="servicio_Impl.TareaServicioImpl">
         <constructor-arg name="tareaDaoBean" ref="tareaDaoBean"></constructor-arg>
     </bean>
@@ -108,10 +105,7 @@
       <constructor-arg name="sessionFactory" ref="sessionFactory"></constructor-arg>
     </bean>
     
-    <bean id="sectorDaoBean" class="dao_Impl.SectorDaoImpl" scope = "singleton">
-        <constructor-arg name="sessionFactory" ref="sessionFactory"></constructor-arg>
-    </bean>
-    
+       
     <bean id="tareaDaoBean" class="dao_Impl.TareaDaoImpl" scope = "singleton">
         <constructor-arg name="sessionFactory" ref="sessionFactory"></constructor-arg>
     </bean>

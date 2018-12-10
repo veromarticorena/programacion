@@ -1,5 +1,6 @@
 package servicio_Impl;
 
+import java.sql.Date;
 import java.util.List;
 
 import dao.LicenciaDao;
@@ -36,15 +37,39 @@ public class LicenciaServicioImpl implements LicenciaServicio {
 		return null;
 	}
 
-	public Licencia traer(long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
+		
 	@Override
 	public List<Licencia> licenciaPorEmpleado(String dni) {
 		
 		return licenciaDao.licenciaPorEmpleado(dni);
+	}
+
+
+	@Override
+	public List<Licencia> licenciaPorEmpleadoYMes(String dni, Integer mes,Integer anio) {
+		// TODO Auto-generated method stub
+		return licenciaDao.licenciaPorEmpleadoYMes(dni,mes,anio);
+	}
+
+
+	@Override
+	public Licencia licenciaPorEmpleadoYFecha(String dni, Date fecha) {
+		// TODO Auto-generated method stub
+		return licenciaDao.licenciaPorEmpleadoYFecha(dni, fecha);
+	}
+
+
+	@Override
+	public Licencia traer(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List<Licencia> licenciasPorMes(Integer mes, Integer anio) {
+		// TODO Auto-generated method stub
+		return licenciaDao.licenciasPorMes(mes, anio);
 	}
 
 }

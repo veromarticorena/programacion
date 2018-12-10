@@ -32,6 +32,10 @@ public class Tarea implements Serializable {
 	protected Empleado empleado;
 	
 	
+	@Column(name="HORAS",nullable = false)
+	protected Integer horas;
+
+	
 	
 	public Empleado getEmpleado() {
 		return empleado;
@@ -41,12 +45,6 @@ public class Tarea implements Serializable {
 	public void setEmpleado(Empleado empleado) {
 		this.empleado = empleado;
 	}
-
-
-	@Column(name="HORAS",nullable = false)
-	protected Integer horas;
-
-
 
 	public Date getFecha() {
 		return fecha;

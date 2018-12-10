@@ -21,7 +21,7 @@ import validacion.Validacion;
 
 
 @Controller
-public class RequerimientosControlador {
+public class RequerimientoControlador {
 	
 	@Autowired
 	EmpleadoServicio empleadoServicio;
@@ -167,51 +167,7 @@ public class RequerimientosControlador {
 		 
 	 }
 	 
-	 @RequestMapping(value = {"/modificar/{id}/{descripcion}"}, method = { RequestMethod.GET })
-	 public ModelAndView modificar(HttpServletRequest request, @PathVariable Integer id, @PathVariable String descripcion){
-		
-		 ModelAndView mv = new ModelAndView("desarrollador/Requerimientos");	
-		 
-		 String mensaje = "";
-		 String error = ""; 
-		 HttpSession session = request.getSession();
-		 
-		 Empleado empleado = new Empleado();		 
-		 empleado = (Empleado) session.getAttribute("loggedIn");
-		 
-		
-		 List<Requerimiento> requerimientos = new ArrayList<Requerimiento>(); 
-		 requerimientos = requerimientoServicio.habilitadosPorEmpleado(empleado.getDni());		 
-		 
-		 try {
-			 
-			 Requerimiento rq = requerimientoServicio.traer(id);	
-			 
-			// rq.setHabilitado(false);
-			 
-			 requerimientoServicio.modificar(rq);
-			 
-			 mensaje = "Se modificó el requerimiento correctamente";
-			 
-			 
-		 }catch (Exception e ) {
-			 
-			 error = "Ocurrio un error al eliminar el requerimiento.";
-			 
-		 }finally {
-			 mv.addObject("requerimientos", requerimientos);	
-			 mv.addObject("mensaje", mensaje);
-			 mv.addObject("error", error);
-		 }
-		
-		 
-		 
-		 
-		 return mv;
-		 
-		 
-	 }
-	 
+	
 	
 
 }

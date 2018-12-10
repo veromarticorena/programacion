@@ -8,15 +8,15 @@ public class ErrorEmpleado {
 	protected String emailError;
 	protected String telefonoError;
 	protected Boolean ok;
-	protected String legajoError;
+	protected String camposObligatorios;
 	
 	public ErrorEmpleado() {}
 	
-	public String getLegajoError() {
-		return legajoError;
+	public String getCamposObligatorios() {
+		return camposObligatorios;
 	}
-	public void setLegajoError(String legajoError) {
-		this.legajoError = legajoError;
+	public void setCamposObligatorios(String camposObligatorios) {
+		this.camposObligatorios = camposObligatorios;
 	}	
 	public Boolean getOk() {
 		return ok;

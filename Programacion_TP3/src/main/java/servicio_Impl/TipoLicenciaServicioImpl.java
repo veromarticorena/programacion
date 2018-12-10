@@ -35,12 +35,12 @@ private TipoLicenciaDao tipoLicenciaDao;
 
 	public List<TipoLicencia> listar() {
 		// TODO Auto-generated method stub
-		return null;
+		return tipoLicenciaDao.listar();
 	}
 
 	public TipoLicencia traer(long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return tipoLicenciaDao.traer(id);
 	}
 
 }

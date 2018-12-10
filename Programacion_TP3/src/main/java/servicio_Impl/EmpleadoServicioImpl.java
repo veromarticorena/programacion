@@ -33,8 +33,8 @@ public class EmpleadoServicioImpl implements  EmpleadoServicio{
 
 
 	public List<Empleado> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return empleadoDao.listar();
 	}
 
 	public Empleado traer(long id) {
@@ -47,6 +47,19 @@ public class EmpleadoServicioImpl implements  EmpleadoServicio{
 	public Empleado empleadoAutenticado(String contrasenia, long legajo) {
 		// TODO Auto-generated method stub
 		return empleadoDao.empleadoAutenticado(contrasenia, legajo);
+	}
+
+
+	@Override
+	public Empleado empleadoPorDni(String dni) {
+		
+		return empleadoDao.empleadoPorDni(dni);
+	}
+
+
+	@Override
+	public List<Empleado> empleadosPorRol(long idRol) {
+		return empleadoDao.empleadosPorRol(idRol);
 	}
 	
 	

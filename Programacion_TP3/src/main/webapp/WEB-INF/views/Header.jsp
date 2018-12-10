@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>TSSI - Gestion de carrera </title>
+    <title>Software Company - Gestion de licencias  </title>
 	
 	
 	<!-- FUENTES Y ESTILOS -->
