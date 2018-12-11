@@ -33,7 +33,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                           Software Company - Gestion de licencias | <small>Desarrollador</small>
+                           Inicio - Mi saldo vacacional y días de estudio | <small>Desarrollador</small>
                         </h1>
                        
                     </div>

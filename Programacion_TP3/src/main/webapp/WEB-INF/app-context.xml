@@ -83,6 +83,10 @@
         <constructor-arg name="tipoLicenciaDaoBean" ref="tipoLicenciaDaoBean"></constructor-arg>
     </bean>
     
+    <bean id="RqPorEmpleadoServiceBean" class="servicio_Impl.RqPorEmpleadoServicioImpl">
+        <constructor-arg name="RqPorEmpleadoDaoBean" ref="RqPorEmpleadoDaoBean"></constructor-arg>
+    </bean>
+    
 
     
     <bean id="empleadoDaoBean" class="dao_Impl.EmpleadoDaoImpl" scope = "singleton">
@@ -113,10 +117,16 @@
     <bean id="tipoLicenciaDaoBean" class="dao_Impl.TipoLicenciaDaoImpl" scope = "singleton">
        <constructor-arg name="sessionFactory" ref="sessionFactory"></constructor-arg>
     </bean>
+    
+     <bean id="RqPorEmpleadoDaoBean" class="dao_Impl.RqPorEmpleadoDaoImpl" scope = "singleton">
+       <constructor-arg name="sessionFactory" ref="sessionFactory"></constructor-arg>
+    </bean>
 	
 	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
+    
+    
     
 
     <bean id="persistenceExceptionTranslationPostProcessor" class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>

@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import entidad.Empleado;
 import entidad.Licencia;
 import entidad.Requerimiento;
+import entidad.RqPorEmpleado;
 import entidad.Tarea;
 import servicio.EmpleadoServicio;
 import servicio.LicenciaServicio;
@@ -51,11 +52,19 @@ public class TareaControlador {
 		ModelAndView mv = new ModelAndView("desarrollador/Tareas");
 		 String form2 = "none";
 		 mv.addObject("form2", form2);	 
+		 String nombreMes = "";
+		
 	      
 		 List<Licencia> licencias = new ArrayList<Licencia>();
 		 List<Tarea> tareas = new ArrayList<Tarea>();
 		 
 		 HttpSession misession = request.getSession(true);
+		 
+		 Calendar fecha = Calendar.getInstance();
+	     Integer anioencurso = fecha.get(Calendar.YEAR);
+		 
+		 
+		 mv.addObject("anioencurso", anioencurso);
 		 
 		 if(anio==null) {
 			 
@@ -74,9 +83,12 @@ public class TareaControlador {
 			 misession.setAttribute("SessionLicencias", licencias);			
 			 misession.setAttribute("SessionTareas", tareas);
 			 
+			 nombreMes = MESES[mes-1].toUpperCase();
+			 
+			 
 		 }	 
 		 
-		 
+		 mv.addObject("titulo", "TAREAS CARGADAS PARA EL MES DE "+nombreMes+" DE"+anio);
 	     return mv;
 		 
 	 }
@@ -92,11 +104,17 @@ public class TareaControlador {
 		 String form2 = "hidden";
 		 mv.addObject("form2", form2); 
 	     
-		 List<Requerimiento> requerimientos = new ArrayList<Requerimiento>();
+		 List<RqPorEmpleado> requerimientos = new ArrayList<RqPorEmpleado>();
 		 
 		 requerimientos =  requerimientoServicio.habilitadosPorEmpleado(dni);
 		 
 		 HttpSession session = request.getSession(true);
+		 
+		 Calendar f = Calendar.getInstance();
+	     Integer anioencurso = f.get(Calendar.YEAR);
+		 
+		 
+		 mv.addObject("anioencurso", anioencurso);
 		
 		 
 		 List<Licencia> licencias = new ArrayList<Licencia>();
@@ -120,6 +138,7 @@ public class TareaControlador {
 		 
 		 mv.addObject("fecha", fecha);
 		 mv.addObject("requerimientos", requerimientos);
+		 mv.addObject("titulo", "TAREAS CARGADAS PARA LA FECHA: "+fecha);
 	     return mv;
 		 
 	 }
@@ -145,7 +164,7 @@ public class TareaControlador {
 		 
 		 tareas = (List<Tarea>) session.getAttribute("SessionTareas");	
 		 
-		 List<Requerimiento> requerimientos = new ArrayList<Requerimiento>();
+		 List<RqPorEmpleado> requerimientos = new ArrayList<RqPorEmpleado>();
 		 
 		 requerimientos =  requerimientoServicio.habilitadosPorEmpleado(dni);
 		 
@@ -184,7 +203,7 @@ public class TareaControlador {
 		 for (Tarea t : tareas) {
 				
 				
-				if(!(t.getRequerimiento().getIdRequerimiento()==tarea.getRequerimiento().getIdRequerimiento()&&t.getFecha().equals(tarea.getFecha())&&t.getEmpleado().getDni().equals(dni))) {
+				if(!(t.getRequerimiento().getNumero()==tarea.getRequerimiento().getNumero()&&t.getFecha().equals(tarea.getFecha())&&t.getEmpleado().getDni().equals(dni))) {
 					
 					aux.add(t);
 					
@@ -227,7 +246,7 @@ public class TareaControlador {
 		 
 		 Tarea aux = tareaServicio.traer(fecha, id, dni);
 		 
-		 List<Requerimiento> requerimientos = new ArrayList<Requerimiento>();
+		 List<RqPorEmpleado> requerimientos = new ArrayList<RqPorEmpleado>();
 		 
 		 requerimientos =  requerimientoServicio.habilitadosPorEmpleado(dni);
 		 
@@ -258,7 +277,7 @@ public class TareaControlador {
 			 }else {
 				 
 				 Requerimiento requerimiento = new Requerimiento();
-				 requerimiento = requerimientoServicio.traer(id);
+				 requerimiento = requerimientoServicio.traerPorNumero(id);
 				 
 				 Empleado empleado = new Empleado();
 				 empleado = empleadoServicio.empleadoPorDni(dni);
@@ -314,13 +333,13 @@ public class TareaControlador {
 		
 		ModelAndView mv = new ModelAndView("rrhh/Tareas");
 		 String form2 = "none";
-		 mv.addObject("form2", form2);	 
+		 	 
 	      
 		 HttpSession session = request.getSession(true);
 		 
 		 List<Tarea> tareas = new ArrayList<Tarea>();
 		 
-		 String nombreMes = MESES[mes-1];
+		 String nombreMes = MESES[mes-1].toUpperCase();
 		 
 		 if(anio==null) {
 			 
@@ -330,12 +349,21 @@ public class TareaControlador {
 			 
 			 tareas = tareaServicio.tareasPorEmpleadoYMes(dni, mes, anio);		 
 				
-			 session.setAttribute("sTareas", tareas);			
+			 session.setAttribute("sTareas", tareas);		
+			 
+			 form2 = "hidden";
 						 
 		 }	 
 		 
-		 mv.addObject("mes", mes);
-		 mv.addObject("anio", anio);
+		 Calendar fecha = Calendar.getInstance();
+	     Integer anioencurso = fecha.get(Calendar.YEAR);
+		 
+		 
+		 mv.addObject("anioencurso", anioencurso);
+		 
+		 mv.addObject("form2", form2); 
+		 mv.addObject("titulo", "TAREAS CARGADAS DEL MES DE "+nombreMes+" DE "+anio+" PARA EL EMPLEADO SELECCIONADO");
+		 mv.addObject("dni", dni);
 		 mv.addObject("nombreMes", nombreMes);
 	     return mv;
 		 
@@ -380,7 +408,7 @@ public class TareaControlador {
 		 mv.addObject("anioencurso",anioencurso);
 		 mv.addObject("nombreMes",nombreMes);
 		 
-		 			      
+		 mv.addObject("titulo", "TAREAS CARGADAS DEL MES DE "+nombreMes+" DE "+anioencurso+" PARA EL EMPLEADO SELECCIONADO");	      
 	 
 	     return mv;
 		 
@@ -438,7 +466,7 @@ public class TareaControlador {
 		 
 		 for (Tarea t : tareas) {				
 				
-				if(!(t.getRequerimiento().getIdRequerimiento()==tarea.getRequerimiento().getIdRequerimiento()&&t.getFecha().equals(tarea.getFecha())&&t.getEmpleado().getDni().equals(dni))) {
+				if(!(t.getRequerimiento().getNumero()==tarea.getRequerimiento().getNumero()&&t.getFecha().equals(tarea.getFecha())&&t.getEmpleado().getDni().equals(dni))) {
 					
 					aux.add(t);
 					

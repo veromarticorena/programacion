@@ -36,10 +36,11 @@ private RolDao rolDao;
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	@Override
 	public Rol traer(long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return rolDao.traer(id);
 	}
 
 }

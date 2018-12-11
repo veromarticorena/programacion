@@ -7,55 +7,48 @@ import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import dao.RolDao;
-import entidad.Rol;
+import dao.RqPorEmpleadoDao;
+import entidad.RqPorEmpleado;
 
-public class RolDaoImpl implements RolDao {
-	
+public class RqPorEmpleadoDaoImpl implements RqPorEmpleadoDao {
+
 	private HibernateTemplate hibernateTemplate;
 	
-	 public RolDaoImpl(SessionFactory sessionFactory) {
+	 public RqPorEmpleadoDaoImpl(SessionFactory sessionFactory) {
 	        this.hibernateTemplate = new HibernateTemplate(sessionFactory);
 	    }
 
 	
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void agregar(Rol t) {
+	public void agregar(RqPorEmpleado t) {
 		 hibernateTemplate.save(t);		
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void modificar(Rol t) {
+	public void modificar(RqPorEmpleado t) {
 		hibernateTemplate.update(t);
 		
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void eliminar(Rol t) {
+	public void eliminar(RqPorEmpleado t) {
 		hibernateTemplate.delete(t);		
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public Rol traer(Long id) {
+	public RqPorEmpleado traer(Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<Rol> listar() {
-		List<Rol> list = hibernateTemplate.loadAll(Rol.class);		
+	public List<RqPorEmpleado> listar() {
+		List<RqPorEmpleado> list = hibernateTemplate.loadAll(RqPorEmpleado.class);		
 		return list;
 	}
 
 
-	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
-	public Rol traer(long id) {
-		// TODO Auto-generated method stub
-		return hibernateTemplate.get(Rol.class, id);
-	}
-
-
+	
 	
 
 }

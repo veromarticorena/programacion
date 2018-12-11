@@ -13,6 +13,8 @@ public interface EmpleadoDao extends Dao<Empleado>{
 
 	List<Empleado> empleadosPorRol(long idRol);
 
+	List<Empleado> listar();
+
 
 
 }

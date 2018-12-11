@@ -16,7 +16,7 @@ public class TareaPk implements Serializable{
 	 @Column(name = "FECHA",nullable = false, length = 10 )	
 	 protected String fecha;
 	 
-	 @Column(name = "ID_RQ")
+	 @Column(name = "NUMERO")
 	 protected Requerimiento requerimiento;
 	 
 	 @Column(name = "DNI_EMPLEADO")

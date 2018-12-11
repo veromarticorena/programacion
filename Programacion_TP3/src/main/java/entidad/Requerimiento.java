@@ -15,40 +15,28 @@ public class Requerimiento implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name="ID_RQ",nullable = false)
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
-	protected Long idRequerimiento;
-	
-
 	@Column(name="NUMERO",nullable = false)
-	protected Long numero;
-	
+	protected Long numero;	
 
 	@Column(name="DESCRIPCION",nullable = false)
 	protected String descripcion;
-	
-	@ManyToOne(cascade={CascadeType.ALL})
-	@JoinColumn(name = "DNI_EMPLEADO")	
-	protected Empleado empleado;
-	
+		
 	@Column(name="HABILITADO",nullable = false)
 	@Type(type = "org.hibernate.type.NumericBooleanType")
 	protected boolean habilitado;
 	
 
 	
+
 	public Long getNumero() {
 		return numero;
 	}
-
-
 
 
 	public void setNumero(Long numero) {
 		this.numero = numero;
 	}
 
-	
 
 	public boolean isHabilitado() {
 		return habilitado;
@@ -60,22 +48,6 @@ public class Requerimiento implements Serializable{
 	public void setHabilitado(boolean habilitado) {
 		this.habilitado = habilitado;
 	}
-
-
-
-
-	public Long getIdRequerimiento() {
-		return idRequerimiento;
-	}
-
-
-
-
-	public void setIdRequerimiento(Long idRequerimiento) {
-		this.idRequerimiento = idRequerimiento;
-	}
-
-
 
 
 	public String getDescripcion() {
@@ -91,26 +63,11 @@ public class Requerimiento implements Serializable{
 
 
 
-
-	public Empleado getEmpleado() {
-		return empleado;
-	}
-
-
-
-
-	public void setEmpleado(Empleado empleado) {
-		this.empleado = empleado;
-	}
-
-
-
-
-	public Requerimiento(Long idRequerimiento, String descripcion, Empleado empleado) {
+	public Requerimiento(String descripcion, Empleado empleado,Long numero) {
 		super();
-		this.idRequerimiento = idRequerimiento;
+		
 		this.descripcion = descripcion;
-		this.empleado = empleado;
+		this.numero = numero;
 	}
 
 

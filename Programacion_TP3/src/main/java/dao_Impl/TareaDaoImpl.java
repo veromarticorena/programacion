@@ -176,7 +176,7 @@ public class TareaDaoImpl implements TareaDao{
 			@Override
 			public List<Tarea> doInHibernate(Session session) throws HibernateException {
 				@SuppressWarnings("unchecked")
-				Query<Tarea> query = session.createQuery("from Tarea as t left join fetch t.requerimiento as r where r.idRequerimiento = "+numero);
+				Query<Tarea> query = session.createQuery("from Tarea as t left join fetch t.requerimiento as r where r.numero = "+numero);
 				List<Tarea> tareas = query.getResultList();
 				
 				return tareas;

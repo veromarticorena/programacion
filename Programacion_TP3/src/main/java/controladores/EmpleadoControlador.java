@@ -100,6 +100,7 @@ public class EmpleadoControlador {
 							mv.addObject("fechaIng", fechaIng);
 							mv.addObject("telefono", telefono);
 							mv.addObject("contrasenia", contrasenia);
+							mv.addObject("empleado", empleado);
 						
 						} catch(Exception ex) {
 							

@@ -27,5 +27,6 @@
         <mapping class="entidad.Sector" />
         <mapping class="entidad.Tarea" />
         <mapping class="entidad.TipoLicencia" />
+        <mapping class="entidad.RqPorEmpleado" />
     </session-factory>
 </hibernate-configuration>

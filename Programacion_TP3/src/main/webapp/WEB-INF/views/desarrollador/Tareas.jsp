@@ -29,7 +29,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                           Software Company - Gestion de licencias <small>| Desarrollador</small>
+                           Asignar horas a mis requerimientos <small>| Desarrollador</small>
                         </h1>
                        
                     </div>
@@ -138,11 +138,11 @@
 						 <label for="enable">Seleccione un requerimiento:</label>
 						 <select class="form-control" name = "rq">
 							<c:forEach items="${requerimientos}" var = "requerimiento">
-								<c:if  test="${requerimiento.idRequerimiento == idRequerimiento}">
-									<option selected = "selected" value="${requerimiento.idRequerimiento}">${requerimiento.numero}-${requerimiento.descripcion}</option>
+								<c:if  test="${requerimiento.requerimiento.numero == idRequerimiento}">
+									<option selected = "selected" value="${requerimiento.requerimiento.numero}">${requerimiento.requerimiento.numero}-${requerimiento.requerimiento.descripcion}</option>
 								</c:if>
-								<c:if test="${requerimiento.idRequerimiento != idRequerimiento}">
-									<option value="${requerimiento.idRequerimiento}">${requerimiento.numero}-${requerimiento.descripcion}</option>
+								<c:if test="${requerimiento.requerimiento.numero != idRequerimiento}">
+									<option value="${requerimiento.requerimiento.numero}">${requerimiento.requerimiento.numero}-${requerimiento.requerimiento.descripcion}</option>
 								</c:if>
 							</c:forEach>										
 						 </select>
@@ -183,9 +183,11 @@
                
                  </form>
                  
-                 <h5 align = "center"> TAREAS CARGADAS PARA EL MES DE ${nombreMes} DE ${anio} </h5>
                  
-                     <c:if test="${!SessionTareas.isEmpty()}">					 
+                 
+                     <c:if test="${!SessionTareas.isEmpty()}">	
+                     
+                     <h5 align = "center"> ${titulo} </h5>				 
 							
 							<span class="input-group-addon">
 					
@@ -220,7 +222,7 @@
 											<td>${tarea.horas}</td>	
 											<td>											
 											<button class="btn btn-default"
-								                onclick="window.location.href='<%=request.getContextPath() %>/eliminar-tarea?fecha=${tarea.fecha}&id=${tarea.requerimiento.idRequerimiento}&dni=${tarea.empleado.dni}'">
+								                onclick="window.location.href='<%=request.getContextPath() %>/eliminar-tarea?fecha=${tarea.fecha}&id=${tarea.requerimiento.numero}&dni=${tarea.empleado.dni}'">
 								                Eliminar
 							  					</button>										
 											</td>			

@@ -17,6 +17,9 @@
                         <a href="tareas-rrhh"><i class="fa fa-fw fa-tasks"></i> Tareas</a>
                     </li>
                     <li>
+                        <a href="menu-rq-rrhh"><i class="fa fa-fw fa-tasks"></i> Requerimientos</a>
+                    </li>
+                    <li>
                         <a href="cierre-rrhh"><i class="fa fa-fw fa-tasks"></i> Cierre mensual</a>
                     </li>
 
@@ -136,7 +139,7 @@
                                
                
                  <c:if test="${sTareas!=null}">		
-                	 <h3 align = "center"> TAREAS CARGADAS DE ${nombreMes} DE ${anioencurso} PARA EL EMPLEADO SELECCIONADO </h3>			 
+                	 <h3 align = "center"> ${titulo}</h3>			 
 							
 							<span class="input-group-addon">
 					

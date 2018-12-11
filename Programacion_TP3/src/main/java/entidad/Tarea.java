@@ -23,7 +23,7 @@ public class Tarea implements Serializable {
 	
 	@Id
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ID_RQ")
+	@JoinColumn(name = "NUMERO")
 	protected Requerimiento requerimiento;
 	
 	@Id

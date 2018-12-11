@@ -17,6 +17,9 @@
                         <a href="tareas-rrhh"><i class="fa fa-fw fa-tasks"></i> Tareas</a>
                     </li>
                     <li>
+                        <a href="menu-rq-rrhh"><i class="fa fa-fw fa-tasks"></i> Requerimientos</a>
+                    </li>
+                    <li>
                         <a href="cierre-rrhh"><i class="fa fa-fw fa-tasks"></i> Cierre mensual</a>
                     </li>
 

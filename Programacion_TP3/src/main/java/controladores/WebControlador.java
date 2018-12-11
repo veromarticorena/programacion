@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import Clases.CierreMensual;
 import entidad.Empleado;
 import entidad.Licencia;
-import entidad.Requerimiento;
+import entidad.RqPorEmpleado;
 import entidad.Tarea;
 import servicio.LicenciaServicio;
 import servicio.RequerimientoServicio;
@@ -72,7 +72,7 @@ public class WebControlador {
 	    	 Empleado empleado = new Empleado();		 
 			 empleado = (Empleado) session.getAttribute("loggedIn");
 			 
-	    	 List<Requerimiento> requerimientos = new ArrayList<Requerimiento>();
+	    	 List<RqPorEmpleado> requerimientos = new ArrayList<RqPorEmpleado>();
 	    	 
 	    	 requerimientos = requerimientoServicio.habilitadosPorEmpleado(empleado.getDni());
 			 ModelAndView mv = new ModelAndView("desarrollador/Requerimientos");
@@ -117,7 +117,7 @@ public class WebControlador {
 		     Integer anioencurso = fecha.get(Calendar.YEAR);
 		     Integer mes = fecha.get(Calendar.MONTH) + 1;   
 		     
-		     String nombreMes = MESES[mes-1];
+		     String nombreMes = MESES[mes-1].toUpperCase();
 		     
 			 
 			 HttpSession misession = request.getSession(true);
@@ -134,6 +134,7 @@ public class WebControlador {
 			 misession.setAttribute("SessionTareas", tareas);			 
 			 mv.addObject("anioencurso", anioencurso);
 			 mv.addObject("nombreMes", nombreMes);
+			 mv.addObject("titulo", "TAREAS CARGADAS PARA EL MES DE "+nombreMes+" DE "+anioencurso);
 			 
 		     return mv;
 		
@@ -207,10 +208,13 @@ public class WebControlador {
 				 
 				 HttpSession misession = request.getSession(true);
 				 
+				 List<Tarea> tareas = new ArrayList<Tarea>();
+ 				 
 				 String form2 = "none";
 				 mv.addObject("form2", form2);		
 				 
 				 misession.removeAttribute("sTareas");
+				 misession.setAttribute("sTareas",tareas);
 							     
 			     return mv;
 			
@@ -244,6 +248,45 @@ public class WebControlador {
 				
 				 ModelAndView mv = new ModelAndView("rrhh/MenuRq");			 
 				 
+			     return mv;
+			
+			}
+			
+			@RequestMapping(value = "/seguimiento-requerimiento", method = { RequestMethod.GET })
+			public ModelAndView seguimientoRRHH() {
+				
+				 ModelAndView mv = new ModelAndView("rrhh/SeguimientoRq");		
+				 
+				 List<Tarea> tareas = new ArrayList<Tarea>();
+				 
+				 mv.addObject("tareas", tareas);
+				 
+			     return mv;
+			
+			}
+			
+			@RequestMapping(value = "/alta-requerimiento", method = { RequestMethod.GET })
+			public ModelAndView altaRequerimiento() {
+				
+				 ModelAndView mv = new ModelAndView("rrhh/AltaRequerimiento");		
+				 
+				 String form2 = "none";
+				 mv.addObject("form2", form2);	
+				 
+			     return mv;
+			
+			}
+			
+			@RequestMapping(value = "/asignar-requerimiento", method = { RequestMethod.GET })
+			public ModelAndView asignarRQ() {
+				
+				 ModelAndView mv = new ModelAndView("rrhh/AsignarRequerimiento");
+				 
+				 String form2 = "none";
+				 mv.addObject("form2", form2);
+				 List<RqPorEmpleado> requerimientos = new ArrayList<RqPorEmpleado>();
+				 
+				 mv.addObject("requerimientos", requerimientos);
 			     return mv;
 			
 			}

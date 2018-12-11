@@ -17,6 +17,9 @@
                         <a href="tareas-rrhh"><i class="fa fa-fw fa-tasks"></i> Tareas</a>
                     </li>
                     <li>
+                        <a href="menu-rq-rrhh"><i class="fa fa-fw fa-tasks"></i> Requerimientos</a>
+                    </li>
+                    <li>
                         <a href="cierre-rrhh"><i class="fa fa-fw fa-tasks"></i> Cierre mensual</a>
                     </li>
 
@@ -59,19 +62,19 @@
 								
 							<div class="form-group">
                                 <label>* Documento de identidad</label>
-                                <input class="form-control" name = "dni" value = "${dni}">     
+                                <input class="form-control" name = "dni" value = "${dni}" maxlength ="8">     
                                 <label class="error">${validacion.dniError}</label>                             
                             </div>	
 
                             <div class="form-group">
                                 <label> * Nombre</label>
-                                <input class="form-control" name = "nombre" value = "${nombre}">  
+                                <input class="form-control" name = "nombre" value = "${nombre}" maxlength ="20">  
                                 <label class="error">${validacion.nombreError}</label>                             
                             </div>
 
                             <div class="form-group">
                                 <label>* Apellido</label>
-                                <input class="form-control" name = "apellido" value = "${apellido}">    
+                                <input class="form-control" name = "apellido" value = "${apellido}" maxlength ="20">    
                                 <label class="error">${validacion.apellidoError}</label>                                  
                                                   
                             </div>
@@ -90,21 +93,21 @@
                             
                             <div class="form-group">
                                 <label>* Telefono</label>
-                                <input class="form-control" name = "telefono" value = "${telefono}">
+                                <input class="form-control" name = "telefono" value = "${telefono}" maxlength ="15">
                                 <p class="help-block">02320443439</p>
                                 <label class="error">${validacion.telefonoError}</label>
                             </div>
 
                             <div class="form-group">
                                 <label>* E-Mail</label>
-                                <input class="form-control" name = "email" value = "${email}">
+                                <input class="form-control" name = "email" value = "${email}" maxlength ="30">
                                 <p class="help-block">email@example.com</p>
                                 <label class="error">${validacion.emailError}</label>
                             </div>
                             
                              <div class="form-group">
                                 <label>* Ingrese una contraseña: </label>
-                                <input class="form-control" name = "contrasenia" value = "${contrasenia}">
+                                <input class="form-control" name = "contrasenia" value = "${contrasenia}" maxlength ="8">
                                 
                             </div>
                                                                       
